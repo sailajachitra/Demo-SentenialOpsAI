@@ -1,0 +1,32 @@
+{
+ "Show me a brute force event": {
+  "event_id": "EVT00390",
+  "reply": "I found event EVT00390 in your SentinelOps database.\nEvent type: login_failure; protocol: TCP; destination port: 443.\nSource IP: 198.51.100.57; destination IP: 10.20.0.3; failed logins: 15; bytes sent: 2564.\nDataset label: Malicious; attack family: brute_force.\nModel prediction: not scored; malicious probability: 0.0%.\nAsset: FIN-HOST-03 (AST003), criticality High, environment Production.\nRelated alerts: ALT0036 (Critical, In Progress).\nRecommended investigation: Triage repeated authentication failures: confirm the account owner, inspect nearby login events and source reputation, then follow your approved account-containment procedure if confirmed.\nNote: this assistant retrieves real project database evidence and applies local investigation rules. It does not call an external generative-AI service or perform response actions."
+ },
+ "Investigate port scanning": {
+  "event_id": "EVT00360",
+  "reply": "I found event EVT00360 in your SentinelOps database.\nEvent type: network_connection; protocol: TCP; destination port: 22.\nSource IP: 198.51.100.239; destination IP: 10.20.0.12; failed logins: 0; bytes sent: 2558.\nDataset label: Malicious; attack family: port_scan_like.\nModel prediction: not scored; malicious probability: 0.0%.\nAsset: FIN-HOST-12 (AST012), criticality Low, environment Testing.\nRecommended investigation: Review the source IP's connection attempts across destination ports and assets. Confirm whether the scanning activity is authorized before containment.\nNote: this assistant retrieves real project database evidence and applies local investigation rules. It does not call an external generative-AI service or perform response actions."
+ },
+ "Explain unusual data transfer": {
+  "event_id": "EVT01000",
+  "reply": "I found event EVT01000 in your SentinelOps database.\nEvent type: data_transfer; protocol: TCP; destination port: 22.\nSource IP: 10.20.1.201; destination IP: 10.20.0.26; failed logins: 0; bytes sent: 58104178.\nDataset label: Malicious; attack family: unusual_transfer.\nModel prediction: not scored; malicious probability: 0.0%.\nAsset: FIN-HOST-26 (AST026), criticality Low, environment Production.\nRecommended investigation: Review transfer volume, destination, asset criticality and business justification. Compare with the user's normal transfer pattern before escalation.\nNote: this assistant retrieves real project database evidence and applies local investigation rules. It does not call an external generative-AI service or perform response actions."
+ },
+ "Find malicious activity": {
+  "event_id": "EVT00360",
+  "reply": "I found event EVT00360 in your SentinelOps database.\nEvent type: network_connection; protocol: TCP; destination port: 22.\nSource IP: 198.51.100.239; destination IP: 10.20.0.12; failed logins: 0; bytes sent: 2558.\nDataset label: Malicious; attack family: port_scan_like.\nModel prediction: not scored; malicious probability: 0.0%.\nAsset: FIN-HOST-12 (AST012), criticality Low, environment Testing.\nRecommended investigation: Review the source IP's connection attempts across destination ports and assets. Confirm whether the scanning activity is authorized before containment.\nNote: this assistant retrieves real project database evidence and applies local investigation rules. It does not call an external generative-AI service or perform response actions."
+ },
+ "Show me a privilege escalation event": {
+  "event_id": "EVT00415",
+  "reply": "I found event EVT00415 in your SentinelOps database.\nEvent type: privilege_change; protocol: TCP; destination port: 22.\nSource IP: 10.20.3.143; destination IP: 10.20.0.9; failed logins: 0; bytes sent: 648.\nDataset label: Malicious; attack family: suspicious_privilege.\nModel prediction: not scored; malicious probability: 0.0%.\nAsset: WEB-HOST-09 (AST009), criticality Medium, environment Development.\nRelated alerts: ALT0043 (High, New).\nRecommended investigation: Verify who initiated the privilege change, whether approval exists, and whether the account recently showed unusual authentication activity.\nNote: this assistant retrieves real project database evidence and applies local investigation rules. It does not call an external generative-AI service or perform response actions."
+ },
+ "Show me a malware event": {
+  "event_id": "EVT00075",
+  "reply": "I found event EVT00075 in your SentinelOps database.\nEvent type: process_execution; protocol: UDP; destination port: 8080.\nSource IP: 10.20.0.53; destination IP: 10.20.0.12; failed logins: 0; bytes sent: 16434.\nDataset label: Malicious; attack family: malware_like.\nModel prediction: not scored; malicious probability: 0.0%.\nAsset: FIN-HOST-12 (AST012), criticality Low, environment Testing.\nRelated alerts: ALT0029 (High, New).\nRecommended investigation: Check process and file activity on the affected asset, validate endpoint protection results, and isolate only under your approved incident process.\nNote: this assistant retrieves real project database evidence and applies local investigation rules. It does not call an external generative-AI service or perform response actions."
+ },
+ "Show critical alerts": {
+  "reply": "I couldn't find matching evidence. Try an exact event ID (for example EVT001), an alert ID, a source IP, or one of these patterns: brute force, port scanning, unusual data transfer, suspicious privilege, malware-like activity."
+ },
+ "What can you do?": {
+  "reply": "I couldn't find matching evidence. Try an exact event ID (for example EVT001), an alert ID, a source IP, or one of these patterns: brute force, port scanning, unusual data transfer, suspicious privilege, malware-like activity."
+ }
+}

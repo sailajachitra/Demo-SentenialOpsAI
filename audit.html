@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="demo-depth" content="0">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SentinelOps AI</title>
+  <link href="static/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/style.css" rel="stylesheet">
+  <script src="static/vendor/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">✦</span><span><b>SentinelOps</b><small>AI SECURITY OPERATIONS</small></span></a>
+    <div class="nav-caption">WORKSPACE</div>
+    <a class="side-link " href="dashboard.html"><span>▦</span>Dashboard</a>
+    
+      <a class="side-link " href="events.html"><span>⌁</span>Logs & Events</a>
+    
+    <a class="side-link " href="alerts.html"><span>⚑</span>Threat Alerts</a>
+    <a class="side-link " href="incidents.html"><span>◈</span>Incidents</a>
+    <a class="side-link " href="copilot.html"><span>✧</span>AI Investigation</a>
+    
+      <a class="side-link " href="reports.html"><span>▥</span>ML Model Lab</a>
+    
+    <div class="nav-caption mt-4">MANAGEMENT</div>
+    <a class="side-link " href="assets.html"><span>▣</span>Assets</a>
+    
+      <a class="side-link " href="users.html"><span>♙</span>User Management</a>
+      <a class="side-link active" href="audit.html"><span>◷</span>Audit Trail</a>
+    
+    <div class="sidebar-bottom"><div class="profile-chip"><div class="avatar" data-user-initial>A</div><div><b data-user-name>admin</b><small data-user-role>Administrator</small></div></div><a class="logout-link" href="login.html?logout=1">↪ Sign out</a></div>
+  </aside>
+  <main class="main-area"><header class="topbar"><div><span class="live-dot"></span> SOC WORKSPACE <span class="topbar-divider">/</span> <span data-user-role>Administrator</span></div><div class="topbar-right"><span>● System online</span><span class="top-avatar" data-user-initial>A</span></div></header>
+
+  <div class="page-content">
+  
+  <h2 class="fw-bold">Audit Log</h2><div class="panel table-responsive"><table class="table"><thead><tr><th>Time</th><th>User</th><th>Action</th><th>Entity</th><th>ID</th><th>Details</th></tr></thead><tbody><tr><td>2026-11-26 02:23:44.921809</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00075</td><td>Show me a malware event</td></tr><tr><td>2026-11-26 02:23:44.917156</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00415</td><td>Show me a privilege escalation event</td></tr><tr><td>2026-11-26 02:23:44.912425</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00360</td><td>Find malicious activity</td></tr><tr><td>2026-11-26 02:23:44.907150</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT01000</td><td>Explain unusual data transfer</td></tr><tr><td>2026-11-26 02:23:44.902693</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00360</td><td>Investigate port scanning</td></tr><tr><td>2026-11-26 02:23:44.895522</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00390</td><td>Show me a brute force event</td></tr><tr><td>2026-11-26 02:22:51.074514</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00075</td><td>Show me a malware event</td></tr><tr><td>2026-11-26 02:22:51.067668</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00415</td><td>Show me a privilege escalation event</td></tr><tr><td>2026-11-26 02:22:51.062979</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00360</td><td>Find malicious activity</td></tr><tr><td>2026-11-26 02:22:51.056307</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT01000</td><td>Explain unusual data transfer</td></tr><tr><td>2026-11-26 02:22:51.051157</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00360</td><td>Investigate port scanning</td></tr><tr><td>2026-11-26 02:22:51.042778</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00390</td><td>Show me a brute force event</td></tr><tr><td>2026-11-26 02:21:28.444151</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00075</td><td>Show me a malware event</td></tr><tr><td>2026-11-26 02:21:28.439925</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00415</td><td>Show me a privilege escalation event</td></tr><tr><td>2026-11-26 02:21:28.435218</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00360</td><td>Find malicious activity</td></tr><tr><td>2026-11-26 02:21:28.429653</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT01000</td><td>Explain unusual data transfer</td></tr><tr><td>2026-11-26 02:21:28.425264</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00360</td><td>Investigate port scanning</td></tr><tr><td>2026-11-26 02:21:28.418463</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00390</td><td>Show me a brute force event</td></tr><tr><td>2026-11-26 02:20:23.985546</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00390</td><td>Show me a brute force event</td></tr><tr><td>2026-11-20 08:59:15.778897</td><td>admin</td><td>Logged out</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 08:58:07.719980</td><td>admin</td><td>Asked database-grounded copilot</td><td>SecurityEvent</td><td>EVT00360</td><td>Find malicious activity</td></tr><tr><td>2026-11-20 08:52:56.482619</td><td>admin</td><td>Logged in</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 08:52:46.997982</td><td>admin</td><td>Login code emailed</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 08:52:20.632547</td><td>admin</td><td>Logged in</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 08:52:08.961091</td><td>admin</td><td>Login code emailed</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 08:50:20.878499</td><td>Gowtham</td><td>Logged out</td><td>AppUser</td><td>5</td><td></td></tr><tr><td>2026-11-20 06:19:32.771796</td><td>Gowtham</td><td>Logged in</td><td>AppUser</td><td>5</td><td></td></tr><tr><td>2026-11-20 06:19:20.094760</td><td>Gowtham</td><td>Login code emailed</td><td>AppUser</td><td>5</td><td></td></tr><tr><td>2026-11-20 06:18:53.531081</td><td>admin</td><td>Logged out</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 06:18:47.381644</td><td>admin</td><td>Created application account</td><td>AppUser</td><td>5</td><td>username=Gowtham; role=Incident Manager; email=gowthamreddykb@gmail.com</td></tr><tr><td>2026-11-20 06:17:32.852849</td><td>admin</td><td>Edited application account</td><td>AppUser</td><td>3</td><td>email: None -&gt; sailajachitra96@gmail.com; password changed</td></tr><tr><td>2026-11-20 06:17:14.649439</td><td>admin</td><td>Edited application account</td><td>AppUser</td><td>2</td><td>email: None -&gt; sailajachitra02@gmail.com; password changed</td></tr><tr><td>2026-11-20 06:16:42.563015</td><td>admin</td><td>Logged in</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 06:16:29.223752</td><td>admin</td><td>Login code emailed</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 06:15:53.416055</td><td>admin</td><td>Password reset via email OTP</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 06:15:42.788491</td><td>admin</td><td>Password reset code verified</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 06:15:28.550868</td><td>admin</td><td>Password reset code emailed</td><td>AppUser</td><td>1</td><td></td></tr><tr><td>2026-11-20 06:14:44.138946</td><td>sailaja</td><td>Logged out</td><td>AppUser</td><td>4</td><td></td></tr><tr><td>2026-11-20 06:14:36.737457</td><td>sailaja</td><td>Logged in</td><td>AppUser</td><td>4</td><td></td></tr><tr><td>2026-11-20 06:14:21.401157</td><td>sailaja</td><td>Login code emailed</td><td>AppUser</td><td>4</td><td></td></tr><tr><td>2026-11-20 06:13:57.544084</td><td>sailaja</td><td>Account created (email verified)</td><td>AppUser</td><td>4</td><td>role=Analyst</td></tr><tr><td>2026-11-20 06:13:40.702143</td><td>sailaja</td><td>Sign-up code emailed</td><td>AppUser</td><td>4</td><td></td></tr><tr><td>2026-11-20 06:11:37.172567</td><td>system</td><td>Imported starter dataset using SQLAlchemy ORM</td><td>Dataset</td><td>SentinelOps_AI_Starter_Dataset</td><td>users=50; assets=30; security_events=1000; alerts=150; incidents=25; incident_timeline=25; investigation_notes=25</td></tr></tbody></table></div>
+  </div>
+</main></div>
+<script src="static/vendor/bootstrap.bundle.min.js"></script>
+
+<script src="static/js/dummy.js"></script>
+</body></html>

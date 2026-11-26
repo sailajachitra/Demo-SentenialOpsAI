@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="demo-depth" content="0">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Management · SentinelOps AI</title>
+  <link href="static/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/style.css" rel="stylesheet">
+  <script src="static/vendor/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">✦</span><span><b>SentinelOps</b><small>AI SECURITY OPERATIONS</small></span></a>
+    <div class="nav-caption">WORKSPACE</div>
+    <a class="side-link " href="dashboard.html"><span>▦</span>Dashboard</a>
+    
+      <a class="side-link " href="events.html"><span>⌁</span>Logs & Events</a>
+    
+    <a class="side-link " href="alerts.html"><span>⚑</span>Threat Alerts</a>
+    <a class="side-link " href="incidents.html"><span>◈</span>Incidents</a>
+    <a class="side-link " href="copilot.html"><span>✧</span>AI Investigation</a>
+    
+      <a class="side-link " href="reports.html"><span>▥</span>ML Model Lab</a>
+    
+    <div class="nav-caption mt-4">MANAGEMENT</div>
+    <a class="side-link " href="assets.html"><span>▣</span>Assets</a>
+    
+      <a class="side-link active" href="users.html"><span>♙</span>User Management</a>
+      <a class="side-link " href="audit.html"><span>◷</span>Audit Trail</a>
+    
+    <div class="sidebar-bottom"><div class="profile-chip"><div class="avatar" data-user-initial>A</div><div><b data-user-name>admin</b><small data-user-role>Administrator</small></div></div><a class="logout-link" href="login.html?logout=1">↪ Sign out</a></div>
+  </aside>
+  <main class="main-area"><header class="topbar"><div><span class="live-dot"></span> SOC WORKSPACE <span class="topbar-divider">/</span> <span data-user-role>Administrator</span></div><div class="topbar-right"><span>● System online</span><span class="top-avatar" data-user-initial>A</span></div></header>
+
+  <div class="page-content">
+  
+  
+<div class="page-heading"><div><div class="eyebrow">ADMINISTRATION</div><h1>User Management</h1>
+<p>Add or remove the accounts that can sign in, and the people that security events refer to.</p></div></div>
+
+<section class="panel mb-4">
+<div class="panel-heading"><div><h2>Application accounts</h2><p>People who can sign in to SentinelOps (email or username + password + emailed code). Everything here is saved in the database; the role decides what they can open.</p></div><span class="panel-tag">5 ACCOUNTS</span></div>
+<form method="post" action="#" class="row g-2 align-items-end mb-3">
+  <div class="col-md-2"><label class="form-label" for="newUsername">Username</label><input class="form-control" id="newUsername" name="username" required minlength="3" maxlength="40" pattern="[A-Za-z0-9_.\-]+" autocomplete="off"></div>
+  <div class="col-md-3"><label class="form-label" for="newEmail">Email (receives login code)</label><input class="form-control" id="newEmail" name="email" type="email" required maxlength="255" autocomplete="off"></div>
+  <div class="col-md-2"><label class="form-label" for="newPassword">Password (min 8)</label><input class="form-control" id="newPassword" name="password" type="password" required minlength="8" autocomplete="new-password"></div>
+  <div class="col-md-2"><label class="form-label" for="newRole">Role</label><select class="form-select" id="newRole" name="role"><option >Administrator</option><option selected>Analyst</option><option >Incident Manager</option></select></div>
+  <div class="col-md-2"><button class="btn btn-primary w-100">＋ Add account</button></div>
+</form>
+<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Username</th><th>Email</th><th>Role</th><th>Status</th><th>Created</th><th class="text-end">Action</th></tr></thead><tbody>
+<tr>
+<td>Gowtham</td><td>gowthamreddykb@gmail.com</td><td>Incident Manager</td>
+<td><span class="status-pill success">Active</span></td>
+<td>20 Nov 2026</td>
+<td class="text-end text-nowrap">
+<button type="button" class="btn btn-sm btn-outline-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="5" data-username="Gowtham" data-email="gowthamreddykb@gmail.com" data-role="Incident Manager" data-active="1" data-self="0">Edit</button>
+<form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove the account Gowtham? They will no longer be able to sign in.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr>
+<td>admin <span class="badge text-bg-secondary">you</span></td><td>sailajadinesh17@gmail.com</td><td>Administrator</td>
+<td><span class="status-pill success">Active</span></td>
+<td>20 Nov 2026</td>
+<td class="text-end text-nowrap">
+<button type="button" class="btn btn-sm btn-outline-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="1" data-username="admin" data-email="sailajadinesh17@gmail.com" data-role="Administrator" data-active="1" data-self="1">Edit</button>
+</td></tr>
+<tr>
+<td>analyst</td><td>sailajachitra02@gmail.com</td><td>Analyst</td>
+<td><span class="status-pill success">Active</span></td>
+<td>20 Nov 2026</td>
+<td class="text-end text-nowrap">
+<button type="button" class="btn btn-sm btn-outline-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="2" data-username="analyst" data-email="sailajachitra02@gmail.com" data-role="Analyst" data-active="1" data-self="0">Edit</button>
+<form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove the account analyst? They will no longer be able to sign in.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr>
+<td>manager</td><td>sailajachitra96@gmail.com</td><td>Incident Manager</td>
+<td><span class="status-pill success">Active</span></td>
+<td>20 Nov 2026</td>
+<td class="text-end text-nowrap">
+<button type="button" class="btn btn-sm btn-outline-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="3" data-username="manager" data-email="sailajachitra96@gmail.com" data-role="Incident Manager" data-active="1" data-self="0">Edit</button>
+<form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove the account manager? They will no longer be able to sign in.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr>
+<td>sailaja</td><td>shashisailaja46@gmail.com</td><td>Analyst</td>
+<td><span class="status-pill success">Active</span></td>
+<td>20 Nov 2026</td>
+<td class="text-end text-nowrap">
+<button type="button" class="btn btn-sm btn-outline-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="4" data-username="sailaja" data-email="shashisailaja46@gmail.com" data-role="Analyst" data-active="1" data-self="0">Edit</button>
+<form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove the account sailaja? They will no longer be able to sign in.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+</tbody></table></div>
+</section>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><form class="modal-content" id="editForm" method="post">
+  <div class="modal-header"><h5 class="modal-title" id="editTitle">Edit account</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body">
+    <div class="mb-3"><label class="form-label" for="editUsername">Username</label><input class="form-control" id="editUsername" name="username" required minlength="3" maxlength="40" pattern="[A-Za-z0-9_.\-]+"></div>
+    <div class="mb-3"><label class="form-label" for="editEmail">Email</label><input class="form-control" id="editEmail" name="email" type="email" required maxlength="255"></div>
+    <div class="mb-3"><label class="form-label" for="editRole">Role</label><select class="form-select" id="editRole" name="role"><option>Administrator</option><option>Analyst</option><option>Incident Manager</option></select></div>
+    <div class="mb-3"><label class="form-label" for="editPassword">New password <span class="text-secondary">(leave empty to keep the current one)</span></label><input class="form-control" id="editPassword" name="password" type="password" minlength="8" autocomplete="new-password"></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" id="editActive" name="active" value="1"><label class="form-check-label" for="editActive">Account active (can sign in)</label></div>
+    <div class="form-text" id="editSelfNote" hidden>This is your own account, so your role and active status can’t be changed here.</div>
+  </div>
+  <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary">Save changes</button></div>
+</form></div></div>
+
+<section class="panel">
+<div class="panel-heading"><div><h2>User directory</h2><p>The people that events and alerts refer to. Removing someone keeps their events; only the link is cleared.</p></div><span class="panel-tag">50 USERS</span></div>
+<form method="post" action="#" class="row g-2 align-items-end mb-3">
+  <div class="col-md-2"><label class="form-label" for="dirId">User ID</label><input class="form-control" id="dirId" name="user_id" placeholder="USR051" maxlength="20"></div>
+  <div class="col-md-2"><label class="form-label" for="dirName">Username</label><input class="form-control" id="dirName" name="username" required maxlength="80"></div>
+  <div class="col-md-2"><label class="form-label" for="dirDept">Department</label><input class="form-control" id="dirDept" name="department" list="deptList" maxlength="80"><datalist id="deptList"><option value="Engineering"><option value="Finance"><option value="HR"><option value="IT"><option value="Operations"><option value="Sales"><option value="Support"></datalist></div>
+  <div class="col-md-2"><label class="form-label" for="dirRole">Source role</label><input class="form-control" id="dirRole" name="role" list="roleList" maxlength="80"><datalist id="roleList"><option value="Administrator"><option value="Developer"><option value="Employee"><option value="Manager"><option value="Security Analyst"></datalist></div>
+  <div class="col-md-2"><label class="form-label" for="dirStatus">Status</label><select class="form-select" id="dirStatus" name="account_status"><option>Active</option><option>Disabled</option></select></div>
+  <div class="col-md-2"><button class="btn btn-primary w-100">＋ Add user</button></div>
+  <div class="col-12"><small class="text-secondary">Leave User ID empty to use the next free one (USR051).</small></div>
+</form>
+<div class="table-responsive"><table class="table align-middle"><thead><tr><th>User ID</th><th>Username</th><th>Department</th><th>Source role</th><th>Status</th><th>Events</th><th class="text-end">Action</th></tr></thead><tbody>
+<tr><td>USR001</td><td>user001</td><td>Engineering</td><td>Employee</td><td>Active</td><td>15</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR001 (user001) from the directory? 15 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR002</td><td>user002</td><td>HR</td><td>Developer</td><td>Active</td><td>17</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR002 (user002) from the directory? 17 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR003</td><td>user003</td><td>Engineering</td><td>Administrator</td><td>Active</td><td>21</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR003 (user003) from the directory? 21 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR004</td><td>user004</td><td>Finance</td><td>Employee</td><td>Active</td><td>16</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR004 (user004) from the directory? 16 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR005</td><td>user005</td><td>Operations</td><td>Administrator</td><td>Active</td><td>24</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR005 (user005) from the directory? 24 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR006</td><td>user006</td><td>Engineering</td><td>Administrator</td><td>Active</td><td>33</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR006 (user006) from the directory? 33 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR007</td><td>user007</td><td>Operations</td><td>Manager</td><td>Active</td><td>16</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR007 (user007) from the directory? 16 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR008</td><td>user008</td><td>Support</td><td>Developer</td><td>Active</td><td>19</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR008 (user008) from the directory? 19 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR009</td><td>user009</td><td>IT</td><td>Developer</td><td>Active</td><td>26</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR009 (user009) from the directory? 26 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR010</td><td>user010</td><td>Finance</td><td>Employee</td><td>Active</td><td>19</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR010 (user010) from the directory? 19 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR011</td><td>user011</td><td>Support</td><td>Manager</td><td>Active</td><td>18</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR011 (user011) from the directory? 18 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR012</td><td>user012</td><td>Engineering</td><td>Security Analyst</td><td>Active</td><td>23</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR012 (user012) from the directory? 23 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR013</td><td>user013</td><td>Finance</td><td>Administrator</td><td>Active</td><td>21</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR013 (user013) from the directory? 21 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR014</td><td>user014</td><td>Operations</td><td>Manager</td><td>Active</td><td>14</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR014 (user014) from the directory? 14 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR015</td><td>user015</td><td>Finance</td><td>Developer</td><td>Active</td><td>16</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR015 (user015) from the directory? 16 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR016</td><td>user016</td><td>Support</td><td>Developer</td><td>Active</td><td>20</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR016 (user016) from the directory? 20 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR017</td><td>user017</td><td>IT</td><td>Security Analyst</td><td>Active</td><td>15</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR017 (user017) from the directory? 15 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR018</td><td>user018</td><td>HR</td><td>Manager</td><td>Active</td><td>28</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR018 (user018) from the directory? 28 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR019</td><td>user019</td><td>Engineering</td><td>Employee</td><td>Active</td><td>16</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR019 (user019) from the directory? 16 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR020</td><td>user020</td><td>Operations</td><td>Developer</td><td>Active</td><td>23</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR020 (user020) from the directory? 23 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR021</td><td>user021</td><td>IT</td><td>Administrator</td><td>Active</td><td>18</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR021 (user021) from the directory? 18 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR022</td><td>user022</td><td>Support</td><td>Employee</td><td>Active</td><td>20</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR022 (user022) from the directory? 20 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR023</td><td>user023</td><td>Support</td><td>Manager</td><td>Active</td><td>18</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR023 (user023) from the directory? 18 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR024</td><td>user024</td><td>HR</td><td>Administrator</td><td>Active</td><td>23</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR024 (user024) from the directory? 23 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR025</td><td>user025</td><td>HR</td><td>Security Analyst</td><td>Active</td><td>19</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR025 (user025) from the directory? 19 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR026</td><td>user026</td><td>HR</td><td>Manager</td><td>Active</td><td>17</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR026 (user026) from the directory? 17 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR027</td><td>user027</td><td>Operations</td><td>Manager</td><td>Active</td><td>19</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR027 (user027) from the directory? 19 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR028</td><td>user028</td><td>Operations</td><td>Security Analyst</td><td>Active</td><td>18</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR028 (user028) from the directory? 18 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR029</td><td>user029</td><td>Operations</td><td>Security Analyst</td><td>Active</td><td>24</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR029 (user029) from the directory? 24 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR030</td><td>user030</td><td>Support</td><td>Employee</td><td>Active</td><td>27</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR030 (user030) from the directory? 27 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR031</td><td>user031</td><td>Support</td><td>Security Analyst</td><td>Active</td><td>21</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR031 (user031) from the directory? 21 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR032</td><td>user032</td><td>Sales</td><td>Administrator</td><td>Disabled</td><td>27</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR032 (user032) from the directory? 27 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR033</td><td>user033</td><td>IT</td><td>Administrator</td><td>Active</td><td>16</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR033 (user033) from the directory? 16 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR034</td><td>user034</td><td>Engineering</td><td>Employee</td><td>Active</td><td>25</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR034 (user034) from the directory? 25 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR035</td><td>user035</td><td>Support</td><td>Manager</td><td>Active</td><td>17</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR035 (user035) from the directory? 17 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR036</td><td>user036</td><td>Finance</td><td>Manager</td><td>Active</td><td>18</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR036 (user036) from the directory? 18 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR037</td><td>user037</td><td>Finance</td><td>Manager</td><td>Disabled</td><td>22</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR037 (user037) from the directory? 22 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR038</td><td>user038</td><td>Operations</td><td>Employee</td><td>Active</td><td>11</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR038 (user038) from the directory? 11 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR039</td><td>user039</td><td>Support</td><td>Administrator</td><td>Active</td><td>18</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR039 (user039) from the directory? 18 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR040</td><td>user040</td><td>IT</td><td>Developer</td><td>Active</td><td>16</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR040 (user040) from the directory? 16 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR041</td><td>user041</td><td>Finance</td><td>Administrator</td><td>Active</td><td>15</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR041 (user041) from the directory? 15 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR042</td><td>user042</td><td>Finance</td><td>Manager</td><td>Active</td><td>18</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR042 (user042) from the directory? 18 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR043</td><td>user043</td><td>HR</td><td>Employee</td><td>Active</td><td>19</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR043 (user043) from the directory? 19 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR044</td><td>user044</td><td>Finance</td><td>Employee</td><td>Active</td><td>18</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR044 (user044) from the directory? 18 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR045</td><td>user045</td><td>Support</td><td>Administrator</td><td>Active</td><td>30</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR045 (user045) from the directory? 30 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR046</td><td>user046</td><td>Engineering</td><td>Security Analyst</td><td>Active</td><td>25</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR046 (user046) from the directory? 25 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR047</td><td>user047</td><td>IT</td><td>Administrator</td><td>Active</td><td>20</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR047 (user047) from the directory? 20 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR048</td><td>user048</td><td>HR</td><td>Administrator</td><td>Active</td><td>19</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR048 (user048) from the directory? 19 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR049</td><td>user049</td><td>Engineering</td><td>Manager</td><td>Active</td><td>20</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR049 (user049) from the directory? 20 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>USR050</td><td>user050</td><td>Sales</td><td>Administrator</td><td>Active</td><td>22</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove USR050 (user050) from the directory? 22 event(s) will be kept but detached from this user.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+</tbody></table></div>
+</section>
+
+  </div>
+</main></div>
+<script src="static/vendor/bootstrap.bundle.min.js"></script>
+
+<script>
+document.querySelectorAll('.edit-btn').forEach(b=>b.addEventListener('click',()=>{
+  const d=b.dataset, f=document.getElementById('editForm');
+  f.action="#"+d.id+"/edit";
+  document.getElementById('editTitle').textContent='Edit '+d.username;
+  editUsername.value=d.username; editEmail.value=d.email; editRole.value=d.role; editPassword.value='';
+  editActive.checked=d.active==='1';
+  const me=d.self==='1'; editRole.disabled=me; editActive.disabled=me; editSelfNote.hidden=!me;
+}));
+</script>
+
+<script src="static/js/dummy.js"></script>
+</body></html>

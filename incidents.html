@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="demo-depth" content="0">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Incident Pipeline · SentinelOps AI</title>
+  <link href="static/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/style.css" rel="stylesheet">
+  <script src="static/vendor/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">✦</span><span><b>SentinelOps</b><small>AI SECURITY OPERATIONS</small></span></a>
+    <div class="nav-caption">WORKSPACE</div>
+    <a class="side-link " href="dashboard.html"><span>▦</span>Dashboard</a>
+    
+      <a class="side-link " href="events.html"><span>⌁</span>Logs & Events</a>
+    
+    <a class="side-link " href="alerts.html"><span>⚑</span>Threat Alerts</a>
+    <a class="side-link active" href="incidents.html"><span>◈</span>Incidents</a>
+    <a class="side-link " href="copilot.html"><span>✧</span>AI Investigation</a>
+    
+      <a class="side-link " href="reports.html"><span>▥</span>ML Model Lab</a>
+    
+    <div class="nav-caption mt-4">MANAGEMENT</div>
+    <a class="side-link " href="assets.html"><span>▣</span>Assets</a>
+    
+      <a class="side-link " href="users.html"><span>♙</span>User Management</a>
+      <a class="side-link " href="audit.html"><span>◷</span>Audit Trail</a>
+    
+    <div class="sidebar-bottom"><div class="profile-chip"><div class="avatar" data-user-initial>A</div><div><b data-user-name>admin</b><small data-user-role>Administrator</small></div></div><a class="logout-link" href="login.html?logout=1">↪ Sign out</a></div>
+  </aside>
+  <main class="main-area"><header class="topbar"><div><span class="live-dot"></span> SOC WORKSPACE <span class="topbar-divider">/</span> <span data-user-role>Administrator</span></div><div class="topbar-right"><span>● System online</span><span class="top-avatar" data-user-initial>A</span></div></header>
+
+  <div class="page-content">
+  
+  
+<div class="page-heading"><div><div class="eyebrow">INCIDENT RESPONSE PIPELINE</div><h1>Incident Management</h1>
+<p>Every incident moves left to right: New → Investigating → Pending Review → Contained → Resolved → Closed. Alerts enter the pipeline when they are escalated.</p></div>
+<div class="heading-actions"><span class="panel-tag">25 INCIDENTS</span><a class="btn btn-outline-primary btn-sm" href="alerts.html">Threat alerts →</a></div></div>
+
+
+
+<div class="pipe-strip" role="list">
+
+<div class="pipe-step ps-1" role="listitem"><span class="pipe-name">New</span><b>9</b>
+<small>36% of incidents</small><i style="width:36%"></i></div>
+
+<div class="pipe-step ps-2" role="listitem"><span class="pipe-name">Investigating</span><b>5</b>
+<small>20% of incidents</small><i style="width:20%"></i></div>
+
+<div class="pipe-step ps-3" role="listitem"><span class="pipe-name">Pending Review</span><b>5</b>
+<small>20% of incidents</small><i style="width:20%"></i></div>
+
+<div class="pipe-step ps-4" role="listitem"><span class="pipe-name">Contained</span><b>0</b>
+<small>0% of incidents</small><i style="width:0%"></i></div>
+
+<div class="pipe-step ps-5" role="listitem"><span class="pipe-name">Resolved</span><b>6</b>
+<small>24% of incidents</small><i style="width:24%"></i></div>
+
+<div class="pipe-step ps-6" role="listitem"><span class="pipe-name">Closed</span><b>0</b>
+<small>0% of incidents</small><i style="width:0%"></i></div>
+
+</div>
+
+
+<div class="dashboard-grid grid-3 mt-3">
+<section class="panel chart-panel"><div class="panel-heading"><div><h2>Detection → response pipeline</h2><p>How many events reach each step</p></div><span class="panel-tag">PIPELINE</span></div><div class="chart-wrap tall-chart"><canvas id="pipeFunnel"></canvas></div></section>
+<section class="panel chart-panel"><div class="panel-heading"><div><h2>Incident priority</h2><p>Incidents by priority</p></div></div><div class="chart-wrap tall-chart doughnut-wrap"><canvas id="pipePriority"></canvas></div></section>
+<section class="panel"><div class="panel-heading"><div><h2>Alerts waiting for escalation</h2><p>88 alerts without an incident, most severe first</p></div></div>
+<div class="table-responsive"><table class="table soc-table"><tbody>
+<tr><td><b>ALT0026</b><div class="small text-secondary">Suspicious network connection pattern</div></td><td><span class="prio p-critical">Critical</span></td>
+<td class="text-end"><form method="post" action="#"><button class="btn btn-sm btn-outline-primary">Open incident</button></form></td></tr>
+<tr><td><b>ALT0041</b><div class="small text-secondary">Suspicious data transfer pattern</div></td><td><span class="prio p-critical">Critical</span></td>
+<td class="text-end"><form method="post" action="#"><button class="btn btn-sm btn-outline-primary">Open incident</button></form></td></tr>
+<tr><td><b>ALT0095</b><div class="small text-secondary">Suspicious data transfer pattern</div></td><td><span class="prio p-critical">Critical</span></td>
+<td class="text-end"><form method="post" action="#"><button class="btn btn-sm btn-outline-primary">Open incident</button></form></td></tr>
+<tr><td><b>ALT0135</b><div class="small text-secondary">Suspicious data transfer pattern</div></td><td><span class="prio p-critical">Critical</span></td>
+<td class="text-end"><form method="post" action="#"><button class="btn btn-sm btn-outline-primary">Open incident</button></form></td></tr>
+<tr><td><b>ALT0045</b><div class="small text-secondary">Suspicious network connection pattern</div></td><td><span class="prio p-critical">Critical</span></td>
+<td class="text-end"><form method="post" action="#"><button class="btn btn-sm btn-outline-primary">Open incident</button></form></td></tr>
+<tr><td><b>ALT0050</b><div class="small text-secondary">Suspicious privilege change pattern</div></td><td><span class="prio p-critical">Critical</span></td>
+<td class="text-end"><form method="post" action="#"><button class="btn btn-sm btn-outline-primary">Open incident</button></form></td></tr>
+<tr><td><b>ALT0150</b><div class="small text-secondary">Suspicious login failure pattern</div></td><td><span class="prio p-critical">Critical</span></td>
+<td class="text-end"><form method="post" action="#"><button class="btn btn-sm btn-outline-primary">Open incident</button></form></td></tr>
+<tr><td><b>ALT0102</b><div class="small text-secondary">Suspicious privilege change pattern</div></td><td><span class="prio p-critical">Critical</span></td>
+<td class="text-end"><form method="post" action="#"><button class="btn btn-sm btn-outline-primary">Open incident</button></form></td></tr>
+
+</tbody></table></div></section>
+</div>
+
+
+<div class="kanban">
+
+<section class="k-col kc-1"><header><span>New</span><b>9</b></header>
+
+<article class="k-card" id="INC0023">
+<div class="k-top"><code>INC0023</code><span class="prio p-medium">Medium</span></div>
+<p class="k-title">Investigation of Suspicious process execution pattern</p>
+<div class="k-meta">Alert ALT0133 · USR025</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0022">
+<div class="k-top"><code>INC0022</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious process execution pattern</p>
+<div class="k-meta">Alert ALT0127 · USR048</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0018">
+<div class="k-top"><code>INC0018</code><span class="prio p-medium">Medium</span></div>
+<p class="k-title">Investigation of Suspicious login failure pattern</p>
+<div class="k-meta">Alert ALT0103 · USR037</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0017">
+<div class="k-top"><code>INC0017</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious network connection pattern</p>
+<div class="k-meta">Alert ALT0097 · USR049</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0014">
+<div class="k-top"><code>INC0014</code><span class="prio p-critical">Critical</span></div>
+<p class="k-title">Investigation of Suspicious network connection pattern</p>
+<div class="k-meta">Alert ALT0079 · USR036</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0011">
+<div class="k-top"><code>INC0011</code><span class="prio p-medium">Medium</span></div>
+<p class="k-title">Investigation of Unusual but potentially benign data transfer</p>
+<div class="k-meta">Alert ALT0061 · USR047</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0010">
+<div class="k-top"><code>INC0010</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Unusual but potentially benign data transfer</p>
+<div class="k-meta">Alert ALT0055 · USR025</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0002">
+<div class="k-top"><code>INC0002</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious network connection pattern</p>
+<div class="k-meta">Alert ALT0007 · USR047</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0001">
+<div class="k-top"><code>INC0001</code><span class="prio p-critical">Critical</span></div>
+<p class="k-title">Investigation of Unusual but potentially benign privilege change</p>
+<div class="k-meta">Alert ALT0001 · USR001</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary" disabled title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option selected>New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+</section>
+
+<section class="k-col kc-2"><header><span>Investigating</span><b>5</b></header>
+
+<article class="k-card" id="INC0015">
+<div class="k-top"><code>INC0015</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Unusual but potentially benign login success</p>
+<div class="k-meta">Alert ALT0085 · USR044</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option selected>Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0012">
+<div class="k-top"><code>INC0012</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious privilege change pattern</p>
+<div class="k-meta">Alert ALT0067 · USR016</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option selected>Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0009">
+<div class="k-top"><code>INC0009</code><span class="prio p-critical">Critical</span></div>
+<p class="k-title">Investigation of Suspicious data transfer pattern</p>
+<div class="k-meta">Alert ALT0049 · USR004</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option selected>Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0006">
+<div class="k-top"><code>INC0006</code><span class="prio p-medium">Medium</span></div>
+<p class="k-title">Investigation of Suspicious login failure pattern</p>
+<div class="k-meta">Alert ALT0031 · USR002</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option selected>Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0005">
+<div class="k-top"><code>INC0005</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Unusual but potentially benign login success</p>
+<div class="k-meta">Alert ALT0025 · USR013</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option selected>Investigating</option><option >Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+</section>
+
+<section class="k-col kc-3"><header><span>Pending Review</span><b>5</b></header>
+
+<article class="k-card" id="INC0025">
+<div class="k-top"><code>INC0025</code><span class="prio p-critical">Critical</span></div>
+<p class="k-title">Investigation of Unusual but potentially benign login failure</p>
+<div class="k-meta">Alert ALT0145 · USR039</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option selected>Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0021">
+<div class="k-top"><code>INC0021</code><span class="prio p-medium">Medium</span></div>
+<p class="k-title">Investigation of Suspicious data transfer pattern</p>
+<div class="k-meta">Alert ALT0121 · USR015</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option selected>Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0019">
+<div class="k-top"><code>INC0019</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious privilege change pattern</p>
+<div class="k-meta">Alert ALT0109 · USR012</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option selected>Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0013">
+<div class="k-top"><code>INC0013</code><span class="prio p-critical">Critical</span></div>
+<p class="k-title">Investigation of Suspicious process execution pattern</p>
+<div class="k-meta">Alert ALT0073 · USR030</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option selected>Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0004">
+<div class="k-top"><code>INC0004</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious network connection pattern</p>
+<div class="k-meta">Alert ALT0019 · USR030</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option selected>Pending Review</option><option >Contained</option><option >Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+</section>
+
+<section class="k-col kc-4"><header><span>Contained</span><b>0</b></header>
+<div class="k-empty">No incidents</div>
+</section>
+
+<section class="k-col kc-5"><header><span>Resolved</span><b>6</b></header>
+
+<article class="k-card" id="INC0024">
+<div class="k-top"><code>INC0024</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious login failure pattern</p>
+<div class="k-meta">Alert ALT0139 · USR004</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option selected>Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0020">
+<div class="k-top"><code>INC0020</code><span class="prio p-medium">Medium</span></div>
+<p class="k-title">Investigation of Suspicious privilege change pattern</p>
+<div class="k-meta">Alert ALT0115 · USR050</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option selected>Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0016">
+<div class="k-top"><code>INC0016</code><span class="prio p-critical">Critical</span></div>
+<p class="k-title">Investigation of Unusual but potentially benign network connection</p>
+<div class="k-meta">Alert ALT0091 · USR049</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option selected>Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0008">
+<div class="k-top"><code>INC0008</code><span class="prio p-critical">Critical</span></div>
+<p class="k-title">Investigation of Suspicious privilege change pattern</p>
+<div class="k-meta">Alert ALT0043 · USR031</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option selected>Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0007">
+<div class="k-top"><code>INC0007</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious data transfer pattern</p>
+<div class="k-meta">Alert ALT0037 · USR015</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option selected>Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+<article class="k-card" id="INC0003">
+<div class="k-top"><code>INC0003</code><span class="prio p-high">High</span></div>
+<p class="k-title">Investigation of Suspicious login failure pattern</p>
+<div class="k-meta">Alert ALT0013 · USR031</div>
+<div class="k-actions">
+<form method="post" action="#"><input type="hidden" name="direction" value="back"><button class="btn btn-sm btn-outline-secondary"  title="Move back one stage">◀ Back</button></form>
+<form method="post" action="#"><input type="hidden" name="direction" value="next"><button class="btn btn-sm btn-primary"  title="Advance to the next stage">Advance ▶</button></form>
+</div>
+<details class="k-more"><summary>Timeline &amp; details</summary>
+<ul class="k-timeline"><li><b>Starter incident imported</b><span>system · 20 Nov 06:11</span></li></ul>
+<form method="post" action="#">
+<label class="form-label small">Stage</label><select name="status" class="form-select form-select-sm mb-2"><option >New</option><option >Investigating</option><option >Pending Review</option><option >Contained</option><option selected>Resolved</option><option >Closed</option></select>
+<label class="form-label small">Root cause</label><textarea name="root_cause" class="form-control form-control-sm mb-2" rows="2">To be determined during investigation</textarea>
+<label class="form-label small">Resolution notes</label><textarea name="resolution_notes" class="form-control form-control-sm mb-2" rows="2"></textarea>
+<button class="btn btn-primary btn-sm">Save details</button></form>
+
+</details></article>
+
+</section>
+
+<section class="k-col kc-6"><header><span>Closed</span><b>0</b></header>
+<div class="k-empty">No incidents</div>
+</section>
+
+</div>
+
+
+  </div>
+</main></div>
+<script src="static/vendor/bootstrap.bundle.min.js"></script>
+
+<script>
+const t='#566170', g='rgba(80,92,108,.14)';
+const F={"labels": ["Events ingested", "Flagged malicious", "Alerts raised", "Incidents opened", "Incidents resolved"], "values": [1000, 200, 150, 25, 6]}, P={"labels": ["Critical", "High", "Medium"], "values": [7, 12, 6]};
+new Chart(document.getElementById('pipeFunnel'),{type:'bar',data:{labels:F.labels,datasets:[{data:F.values,backgroundColor:['#5a8fc4','#d95b6a','#e09b45','#8a7fcf','#4aa98c'],borderRadius:6}]},
+ options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,ticks:{color:t},grid:{color:g}},y:{ticks:{color:t},grid:{display:false}}}}});
+new Chart(document.getElementById('pipePriority'),{type:'doughnut',data:{labels:P.labels,datasets:[{data:P.values,backgroundColor:['#d95b6a','#e09b45','#d6b653','#4aa98c','#94a0b0'],borderWidth:0}]},
+ options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:t}}}}});
+</script>
+
+<script src="static/js/dummy.js"></script>
+</body></html>

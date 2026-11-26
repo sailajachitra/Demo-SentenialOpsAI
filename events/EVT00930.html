@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="demo-depth" content="1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SentinelOps AI</title>
+  <link href="../static/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/style.css" rel="stylesheet">
+  <script src="../static/vendor/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="../dashboard.html"><span class="brand-mark">✦</span><span><b>SentinelOps</b><small>AI SECURITY OPERATIONS</small></span></a>
+    <div class="nav-caption">WORKSPACE</div>
+    <a class="side-link " href="../dashboard.html"><span>▦</span>Dashboard</a>
+    
+      <a class="side-link active" href="../events.html"><span>⌁</span>Logs & Events</a>
+    
+    <a class="side-link " href="../alerts.html"><span>⚑</span>Threat Alerts</a>
+    <a class="side-link " href="../incidents.html"><span>◈</span>Incidents</a>
+    <a class="side-link " href="../copilot.html"><span>✧</span>AI Investigation</a>
+    
+      <a class="side-link " href="../reports.html"><span>▥</span>ML Model Lab</a>
+    
+    <div class="nav-caption mt-4">MANAGEMENT</div>
+    <a class="side-link " href="../assets.html"><span>▣</span>Assets</a>
+    
+      <a class="side-link " href="../users.html"><span>♙</span>User Management</a>
+      <a class="side-link " href="../audit.html"><span>◷</span>Audit Trail</a>
+    
+    <div class="sidebar-bottom"><div class="profile-chip"><div class="avatar" data-user-initial>A</div><div><b data-user-name>admin</b><small data-user-role>Administrator</small></div></div><a class="logout-link" href="../login.html?logout=1">↪ Sign out</a></div>
+  </aside>
+  <main class="main-area"><header class="topbar"><div><span class="live-dot"></span> SOC WORKSPACE <span class="topbar-divider">/</span> <span data-user-role>Administrator</span></div><div class="topbar-right"><span>● System online</span><span class="top-avatar" data-user-initial>A</span></div></header>
+
+  <div class="page-content">
+  
+  <a href="../events.html">← Events</a><h2 class="fw-bold mt-2">EVT00930</h2>
+<div class="row g-3"><div class="col-lg-8"><div class="panel"><h5>Event evidence</h5><dl class="row">
+
+<dt class="col-sm-4">Time</dt><dd class="col-sm-8">21-10-2026 12:54</dd>
+<dt class="col-sm-4">User ID</dt><dd class="col-sm-8">USR024</dd>
+<dt class="col-sm-4">Asset ID</dt><dd class="col-sm-8">AST017</dd>
+<dt class="col-sm-4">Source IP</dt><dd class="col-sm-8">10.20.3.122</dd>
+<dt class="col-sm-4">Destination IP</dt><dd class="col-sm-8">10.20.0.17</dd>
+<dt class="col-sm-4">Event type</dt><dd class="col-sm-8">data_transfer</dd>
+<dt class="col-sm-4">Protocol</dt><dd class="col-sm-8">TCP</dd>
+<dt class="col-sm-4">Destination port</dt><dd class="col-sm-8">8443</dd>
+<dt class="col-sm-4">Failed logins</dt><dd class="col-sm-8">—</dd>
+<dt class="col-sm-4">Bytes sent</dt><dd class="col-sm-8">73716091</dd>
+<dt class="col-sm-4">Severity hint</dt><dd class="col-sm-8">Critical</dd>
+<dt class="col-sm-4">Ground-truth label</dt><dd class="col-sm-8">Malicious</dd>
+<dt class="col-sm-4">Ground-truth attack type</dt><dd class="col-sm-8">unusual_transfer</dd></dl></div></div>
+<div class="col-lg-4"><div class="panel"><h5>ML result</h5><div class="display-6">Not scored</div><p>Malicious probability: 0.0%</p><p>Predicted attack family: —</p><small class="text-secondary">Prediction is not ground truth. Analyst validation is required.</small></div>
+
+<div class="panel mt-3"><h5>Related alerts</h5><p><a href="../alerts.html">ALT0135</a> · Critical · New</p></div></div></div>
+  </div>
+</main></div>
+<script src="../static/vendor/bootstrap.bundle.min.js"></script>
+
+<script src="../static/js/dummy.js"></script>
+</body></html>

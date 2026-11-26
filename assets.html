@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="demo-depth" content="0">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assets · SentinelOps AI</title>
+  <link href="static/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/style.css" rel="stylesheet">
+  <script src="static/vendor/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">✦</span><span><b>SentinelOps</b><small>AI SECURITY OPERATIONS</small></span></a>
+    <div class="nav-caption">WORKSPACE</div>
+    <a class="side-link " href="dashboard.html"><span>▦</span>Dashboard</a>
+    
+      <a class="side-link " href="events.html"><span>⌁</span>Logs & Events</a>
+    
+    <a class="side-link " href="alerts.html"><span>⚑</span>Threat Alerts</a>
+    <a class="side-link " href="incidents.html"><span>◈</span>Incidents</a>
+    <a class="side-link " href="copilot.html"><span>✧</span>AI Investigation</a>
+    
+      <a class="side-link " href="reports.html"><span>▥</span>ML Model Lab</a>
+    
+    <div class="nav-caption mt-4">MANAGEMENT</div>
+    <a class="side-link active" href="assets.html"><span>▣</span>Assets</a>
+    
+      <a class="side-link " href="users.html"><span>♙</span>User Management</a>
+      <a class="side-link " href="audit.html"><span>◷</span>Audit Trail</a>
+    
+    <div class="sidebar-bottom"><div class="profile-chip"><div class="avatar" data-user-initial>A</div><div><b data-user-name>admin</b><small data-user-role>Administrator</small></div></div><a class="logout-link" href="login.html?logout=1">↪ Sign out</a></div>
+  </aside>
+  <main class="main-area"><header class="topbar"><div><span class="live-dot"></span> SOC WORKSPACE <span class="topbar-divider">/</span> <span data-user-role>Administrator</span></div><div class="topbar-right"><span>● System online</span><span class="top-avatar" data-user-initial>A</span></div></header>
+
+  <div class="page-content">
+  
+  
+<div class="page-heading"><div><div class="eyebrow">INVENTORY</div><h1>Asset Inventory</h1>
+<p>Add or remove assets. Removing an asset keeps its events; only the link is cleared.</p></div><span class="panel-tag">30 ASSETS</span></div>
+
+<section class="panel mb-3">
+<form method="post" action="#" class="row g-2 align-items-end">
+  <div class="col-md-2"><label class="form-label" for="aId">Asset ID</label><input class="form-control" id="aId" name="asset_id" placeholder="AST031" maxlength="20"></div>
+  <div class="col-md-3"><label class="form-label" for="aName">Name</label><input class="form-control" id="aName" name="asset_name" required maxlength="100" placeholder="WEB-HOST-31"></div>
+  <div class="col-md-2"><label class="form-label" for="aType">Type</label><input class="form-control" id="aType" name="asset_type" list="typeList" required maxlength="80"><datalist id="typeList"><option value="Laptop"><option value="Workstation"><option value="Web Server"><option value="File Server"><option value="Database Server"><option value="Server"></datalist></div>
+  <div class="col-md-2"><label class="form-label" for="aIp">IP address</label><input class="form-control" id="aIp" name="ip_address" required placeholder="10.20.0.31"></div>
+  <div class="col-md-1"><label class="form-label" for="aCrit">Criticality</label><select class="form-select" id="aCrit" name="criticality"><option >Low</option><option selected>Medium</option><option >High</option><option >Critical</option></select></div>
+  <div class="col-md-2"><label class="form-label" for="aEnv">Environment</label><input class="form-control" id="aEnv" name="environment" list="envList" required maxlength="50" value="Production"><datalist id="envList"><option value="Production"><option value="Testing"><option value="Development"></datalist></div>
+  <div class="col-12 d-flex align-items-center gap-3"><button class="btn btn-primary">＋ Add asset</button><small class="text-secondary">Leave Asset ID empty to use the next free one (AST031).</small></div>
+</form></section>
+
+<div class="panel table-responsive"><table class="table align-middle"><thead><tr><th>Asset ID</th><th>Name</th><th>Type</th><th>IP</th><th>Criticality</th><th>Environment</th><th>Events</th><th class="text-end">Action</th></tr></thead><tbody>
+<tr><td>AST001</td><td>HR-HOST-01</td><td>Laptop</td><td>10.20.0.1</td><td>Medium</td><td>Testing</td><td>27</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST001 (HR-HOST-01)? 27 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST002</td><td>DB-HOST-02</td><td>Workstation</td><td>10.20.0.2</td><td>Medium</td><td>Production</td><td>43</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST002 (DB-HOST-02)? 43 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST003</td><td>FIN-HOST-03</td><td>Web Server</td><td>10.20.0.3</td><td>High</td><td>Production</td><td>31</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST003 (FIN-HOST-03)? 31 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST004</td><td>FIN-HOST-04</td><td>Laptop</td><td>10.20.0.4</td><td>High</td><td>Production</td><td>26</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST004 (FIN-HOST-04)? 26 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST005</td><td>DB-HOST-05</td><td>Workstation</td><td>10.20.0.5</td><td>Medium</td><td>Development</td><td>35</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST005 (DB-HOST-05)? 35 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST006</td><td>HR-HOST-06</td><td>File Server</td><td>10.20.0.6</td><td>Low</td><td>Testing</td><td>25</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST006 (HR-HOST-06)? 25 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST007</td><td>DB-HOST-07</td><td>Database Server</td><td>10.20.0.7</td><td>Medium</td><td>Development</td><td>35</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST007 (DB-HOST-07)? 35 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST008</td><td>WEB-HOST-08</td><td>Workstation</td><td>10.20.0.8</td><td>Low</td><td>Testing</td><td>30</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST008 (WEB-HOST-08)? 30 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST009</td><td>WEB-HOST-09</td><td>Server</td><td>10.20.0.9</td><td>Medium</td><td>Development</td><td>27</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST009 (WEB-HOST-09)? 27 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST010</td><td>OPS-HOST-10</td><td>Laptop</td><td>10.20.0.10</td><td>High</td><td>Testing</td><td>41</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST010 (OPS-HOST-10)? 41 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST011</td><td>FIN-HOST-11</td><td>Laptop</td><td>10.20.0.11</td><td>Medium</td><td>Development</td><td>34</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST011 (FIN-HOST-11)? 34 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST012</td><td>FIN-HOST-12</td><td>Workstation</td><td>10.20.0.12</td><td>Low</td><td>Testing</td><td>51</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST012 (FIN-HOST-12)? 51 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST013</td><td>WEB-HOST-13</td><td>Workstation</td><td>10.20.0.13</td><td>Medium</td><td>Development</td><td>35</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST013 (WEB-HOST-13)? 35 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST014</td><td>WEB-HOST-14</td><td>Workstation</td><td>10.20.0.14</td><td>High</td><td>Production</td><td>28</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST014 (WEB-HOST-14)? 28 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST015</td><td>WEB-HOST-15</td><td>File Server</td><td>10.20.0.15</td><td>Low</td><td>Testing</td><td>29</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST015 (WEB-HOST-15)? 29 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST016</td><td>DB-HOST-16</td><td>Laptop</td><td>10.20.0.16</td><td>Critical</td><td>Production</td><td>29</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST016 (DB-HOST-16)? 29 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST017</td><td>HR-HOST-17</td><td>Database Server</td><td>10.20.0.17</td><td>Medium</td><td>Production</td><td>27</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST017 (HR-HOST-17)? 27 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST018</td><td>WEB-HOST-18</td><td>Laptop</td><td>10.20.0.18</td><td>Low</td><td>Production</td><td>40</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST018 (WEB-HOST-18)? 40 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST019</td><td>WEB-HOST-19</td><td>Server</td><td>10.20.0.19</td><td>Critical</td><td>Development</td><td>35</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST019 (WEB-HOST-19)? 35 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST020</td><td>ENG-HOST-20</td><td>Database Server</td><td>10.20.0.20</td><td>High</td><td>Testing</td><td>32</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST020 (ENG-HOST-20)? 32 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST021</td><td>DB-HOST-21</td><td>Web Server</td><td>10.20.0.21</td><td>High</td><td>Production</td><td>41</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST021 (DB-HOST-21)? 41 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST022</td><td>HR-HOST-22</td><td>Server</td><td>10.20.0.22</td><td>Medium</td><td>Production</td><td>38</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST022 (HR-HOST-22)? 38 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST023</td><td>DB-HOST-23</td><td>Web Server</td><td>10.20.0.23</td><td>Medium</td><td>Testing</td><td>29</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST023 (DB-HOST-23)? 29 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST024</td><td>ENG-HOST-24</td><td>Laptop</td><td>10.20.0.24</td><td>Low</td><td>Development</td><td>44</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST024 (ENG-HOST-24)? 44 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST025</td><td>DB-HOST-25</td><td>File Server</td><td>10.20.0.25</td><td>Low</td><td>Testing</td><td>37</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST025 (DB-HOST-25)? 37 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST026</td><td>FIN-HOST-26</td><td>Workstation</td><td>10.20.0.26</td><td>Low</td><td>Production</td><td>25</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST026 (FIN-HOST-26)? 25 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST027</td><td>OPS-HOST-27</td><td>Workstation</td><td>10.20.0.27</td><td>Medium</td><td>Testing</td><td>32</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST027 (OPS-HOST-27)? 32 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST028</td><td>HR-HOST-28</td><td>File Server</td><td>10.20.0.28</td><td>Medium</td><td>Testing</td><td>35</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST028 (HR-HOST-28)? 35 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST029</td><td>FIN-HOST-29</td><td>Database Server</td><td>10.20.0.29</td><td>High</td><td>Testing</td><td>28</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST029 (FIN-HOST-29)? 28 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+<tr><td>AST030</td><td>DB-HOST-30</td><td>Server</td><td>10.20.0.30</td><td>Critical</td><td>Production</td><td>31</td>
+<td class="text-end"><form method="post" action="#" class="d-inline" onsubmit='return confirm("Remove asset AST030 (DB-HOST-30)? 31 event(s) will be kept but detached from this asset.")'><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+</tbody></table></div>
+
+  </div>
+</main></div>
+<script src="static/vendor/bootstrap.bundle.min.js"></script>
+
+<script src="static/js/dummy.js"></script>
+</body></html>

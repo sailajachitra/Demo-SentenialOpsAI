@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="demo-depth" content="0">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reset password · SentinelOps AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="static/css/login.css" rel="stylesheet">
+</head>
+<body class="login-page">
+<div class="stage">
+  <section class="hero"><div class="hero-brand"><span class="mark">✦</span><span><b>SentinelOps</b><small>AI SECURITY OPERATIONS</small></span></div></section>
+  <svg class="curve" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M80 0 C 71 22, 58 58, 53 100 L100 100 L100 0 Z"/></svg>
+  <main class="card-wrap">
+    <div class="card">
+      <h1>Verify your email</h1>
+      <p class="lead">Enter the 6-digit code sent to <b>a****@example.com</b> to reset your password.<br>It expires in 5 minutes.</p>
+      
+      <form method="post" action="verify_reset.html" novalidate>
+        <label for="code">Verification code<span>*</span></label>
+        <input id="code" class="otp" name="code" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="••••••" required autofocus>
+        <button class="submit" type="submit">Verify code</button>
+      </form>
+      <form method="post" action="#" class="resend">
+        <span>Didn’t get it?</span>
+        <button class="linkbtn" id="resend" type="submit" >Resend code</button>
+      </form>
+      <a class="back" href="login.html">← Back to sign in</a>
+    </div>
+  </main>
+</div>
+<script>
+let left=0;const cd=document.getElementById('cd'),btn=document.getElementById('resend');
+if(left>0){const t=setInterval(()=>{left--;if(left<=0){clearInterval(t);btn.disabled=false;btn.textContent='Resend code';}else cd.textContent=left;},1000);}
+</script>
+<script src="static/js/dummy.js"></script>
+</body></html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="demo-depth" content="0">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New event · SentinelOps AI</title>
+  <link href="static/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/style.css" rel="stylesheet">
+  <script src="static/vendor/chart.umd.js"></script>
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">✦</span><span><b>SentinelOps</b><small>AI SECURITY OPERATIONS</small></span></a>
+    <div class="nav-caption">WORKSPACE</div>
+    <a class="side-link " href="dashboard.html"><span>▦</span>Dashboard</a>
+    
+      <a class="side-link active" href="events.html"><span>⌁</span>Logs & Events</a>
+    
+    <a class="side-link " href="alerts.html"><span>⚑</span>Threat Alerts</a>
+    <a class="side-link " href="incidents.html"><span>◈</span>Incidents</a>
+    <a class="side-link " href="copilot.html"><span>✧</span>AI Investigation</a>
+    
+      <a class="side-link " href="reports.html"><span>▥</span>ML Model Lab</a>
+    
+    <div class="nav-caption mt-4">MANAGEMENT</div>
+    <a class="side-link " href="assets.html"><span>▣</span>Assets</a>
+    
+      <a class="side-link " href="users.html"><span>♙</span>User Management</a>
+      <a class="side-link " href="audit.html"><span>◷</span>Audit Trail</a>
+    
+    <div class="sidebar-bottom"><div class="profile-chip"><div class="avatar" data-user-initial>A</div><div><b data-user-name>admin</b><small data-user-role>Administrator</small></div></div><a class="logout-link" href="login.html?logout=1">↪ Sign out</a></div>
+  </aside>
+  <main class="main-area"><header class="topbar"><div><span class="live-dot"></span> SOC WORKSPACE <span class="topbar-divider">/</span> <span data-user-role>Administrator</span></div><div class="topbar-right"><span>● System online</span><span class="top-avatar" data-user-initial>A</span></div></header>
+
+  <div class="page-content">
+  
+  
+<div class="page-heading"><div><div class="eyebrow">INGEST</div><h1>Add and score a new event</h1>
+<p>The event is scored by the models, <b>added to the dataset (data/security_events.csv)</b>, and the models retrain in the background so ML Model Lab, the pattern graphs and the Dashboard change. The ground-truth label stays blank until an analyst confirms it on the event page.</p></div></div>
+<div class="panel"><form method="post" class="row g-3">
+
+<div class="col-md-4"><label class="form-label" for="f_event_id">Event ID</label><input class="form-control" id="f_event_id" name="event_id" type="text" value="EVT01001" required ></div>
+<div class="col-md-4"><label class="form-label" for="f_event_time">Event time (dd-mm-yyyy hh:mm)</label><input class="form-control" id="f_event_time" name="event_time" type="text" value="26-11-2026 02:24" required ></div>
+<div class="col-md-4"><label class="form-label" for="f_src_ip">Source IP</label><input class="form-control" id="f_src_ip" name="src_ip" type="text" value="10.20.2.15" required ></div>
+<div class="col-md-4"><label class="form-label" for="f_dst_ip">Destination IP</label><input class="form-control" id="f_dst_ip" name="dst_ip" type="text" value="10.20.0.22" required ></div>
+<div class="col-md-4"><label class="form-label" for="f_event_type">Event type</label><input class="form-control" id="f_event_type" name="event_type" list="typeList" value="login_failure" required><datalist id="typeList"><option value="login_failure"><option value="login_success"><option value="privilege_change"><option value="data_transfer"><option value="process_execution"><option value="network_connection"><option value="file_access"><option value="dns_query"></datalist></div>
+<div class="col-md-4"><label class="form-label" for="f_protocol">Protocol</label><input class="form-control" id="f_protocol" name="protocol" list="protoList" value="TCP" required><datalist id="protoList"><option value="TCP"><option value="UDP"></datalist></div>
+<div class="col-md-4"><label class="form-label" for="f_dst_port">Destination port</label><input class="form-control" id="f_dst_port" name="dst_port" type="number" value="443" required min="0"></div>
+<div class="col-md-4"><label class="form-label" for="f_failed_login_count">Failed login count</label><input class="form-control" id="f_failed_login_count" name="failed_login_count" type="number" value="0" required min="0"></div>
+<div class="col-md-4"><label class="form-label" for="f_bytes_sent">Bytes sent</label><input class="form-control" id="f_bytes_sent" name="bytes_sent" type="number" value="1000" required min="0"></div>
+<div class="col-md-4"><label class="form-label" for="f_user">User</label><select class="form-select" id="f_user" name="user_id"><option value="">Unknown</option><option value="USR001" >USR001 · user001</option><option value="USR002" >USR002 · user002</option><option value="USR003" >USR003 · user003</option><option value="USR004" >USR004 · user004</option><option value="USR005" >USR005 · user005</option><option value="USR006" >USR006 · user006</option><option value="USR007" >USR007 · user007</option><option value="USR008" >USR008 · user008</option><option value="USR009" >USR009 · user009</option><option value="USR010" >USR010 · user010</option><option value="USR011" >USR011 · user011</option><option value="USR012" >USR012 · user012</option><option value="USR013" >USR013 · user013</option><option value="USR014" >USR014 · user014</option><option value="USR015" >USR015 · user015</option><option value="USR016" >USR016 · user016</option><option value="USR017" >USR017 · user017</option><option value="USR018" >USR018 · user018</option><option value="USR019" >USR019 · user019</option><option value="USR020" >USR020 · user020</option><option value="USR021" >USR021 · user021</option><option value="USR022" >USR022 · user022</option><option value="USR023" >USR023 · user023</option><option value="USR024" >USR024 · user024</option><option value="USR025" >USR025 · user025</option><option value="USR026" >USR026 · user026</option><option value="USR027" >USR027 · user027</option><option value="USR028" >USR028 · user028</option><option value="USR029" >USR029 · user029</option><option value="USR030" >USR030 · user030</option><option value="USR031" >USR031 · user031</option><option value="USR032" >USR032 · user032</option><option value="USR033" >USR033 · user033</option><option value="USR034" >USR034 · user034</option><option value="USR035" >USR035 · user035</option><option value="USR036" >USR036 · user036</option><option value="USR037" >USR037 · user037</option><option value="USR038" >USR038 · user038</option><option value="USR039" >USR039 · user039</option><option value="USR040" >USR040 · user040</option><option value="USR041" >USR041 · user041</option><option value="USR042" >USR042 · user042</option><option value="USR043" >USR043 · user043</option><option value="USR044" >USR044 · user044</option><option value="USR045" >USR045 · user045</option><option value="USR046" >USR046 · user046</option><option value="USR047" >USR047 · user047</option><option value="USR048" >USR048 · user048</option><option value="USR049" >USR049 · user049</option><option value="USR050" >USR050 · user050</option></select></div>
+<div class="col-md-4"><label class="form-label" for="f_asset">Asset</label><select class="form-select" id="f_asset" name="asset_id"><option value="">Unknown</option><option value="AST001" >AST001 · HR-HOST-01</option><option value="AST002" >AST002 · DB-HOST-02</option><option value="AST003" >AST003 · FIN-HOST-03</option><option value="AST004" >AST004 · FIN-HOST-04</option><option value="AST005" >AST005 · DB-HOST-05</option><option value="AST006" >AST006 · HR-HOST-06</option><option value="AST007" >AST007 · DB-HOST-07</option><option value="AST008" >AST008 · WEB-HOST-08</option><option value="AST009" >AST009 · WEB-HOST-09</option><option value="AST010" >AST010 · OPS-HOST-10</option><option value="AST011" >AST011 · FIN-HOST-11</option><option value="AST012" >AST012 · FIN-HOST-12</option><option value="AST013" >AST013 · WEB-HOST-13</option><option value="AST014" >AST014 · WEB-HOST-14</option><option value="AST015" >AST015 · WEB-HOST-15</option><option value="AST016" >AST016 · DB-HOST-16</option><option value="AST017" >AST017 · HR-HOST-17</option><option value="AST018" >AST018 · WEB-HOST-18</option><option value="AST019" >AST019 · WEB-HOST-19</option><option value="AST020" >AST020 · ENG-HOST-20</option><option value="AST021" >AST021 · DB-HOST-21</option><option value="AST022" >AST022 · HR-HOST-22</option><option value="AST023" >AST023 · DB-HOST-23</option><option value="AST024" >AST024 · ENG-HOST-24</option><option value="AST025" >AST025 · DB-HOST-25</option><option value="AST026" >AST026 · FIN-HOST-26</option><option value="AST027" >AST027 · OPS-HOST-27</option><option value="AST028" >AST028 · HR-HOST-28</option><option value="AST029" >AST029 · FIN-HOST-29</option><option value="AST030" >AST030 · DB-HOST-30</option></select></div>
+<div class="col-md-4"><label class="form-label" for="f_sev">Severity hint</label><select class="form-select" id="f_sev" name="severity_hint"><option >Low</option><option selected>Medium</option><option >High</option><option >Critical</option></select></div>
+<div class="col-12"><button class="btn btn-primary">Predict and save event</button> <a class="btn btn-outline-secondary" href="events.html">Cancel</a></div></form></div>
+
+  </div>
+</main></div>
+<script src="static/vendor/bootstrap.bundle.min.js"></script>
+
+<script src="static/js/dummy.js"></script>
+</body></html>
